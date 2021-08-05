@@ -1,0 +1,35 @@
+{
+  "name": "felica-hb-key-opener",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nzws/felica-hb-key-opener",
+  "author": "nzws <dev@nzws.me>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint:format": "prettier --check --ignore-path .gitignore .",
+    "lint:es": "eslint --cache --ignore-path .gitignore .",
+    "lint:ts": "tsc --noEmit",
+    "lint": "npm-run-all lint:* -s",
+    "format:prettier": "prettier --write --ignore-path .gitignore .",
+    "format": "npm-run-all format:* -s",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@nzws/prettier-config": "~1.0.1",
+    "@types/node": "^14.14.27",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "eslint": "~7.20.0",
+    "eslint-config-prettier": "^8.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "~2.2.1",
+    "typescript": "^4.3.5"
+  },
+  "prettier": "@nzws/prettier-config",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "hap-node-client": "^0.1.16",
+    "node-nfcpy-id": "^0.1.1"
+  }
+}
