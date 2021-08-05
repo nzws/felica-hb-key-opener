@@ -29,7 +29,7 @@ const getInstances = (hap: HAPNodeJSClient): Promise<Device[]> =>
 
   const aid = parseInt(HB_ACC_AID);
   let iid: number;
-  const ids = CARD_ID.split(',');
+  const ids = (CARD_ID || '').split(',');
 
   hap.on('Ready', async () => {
     const instance = (await getInstances(hap)).find(
@@ -48,9 +48,12 @@ const getInstances = (hap: HAPNodeJSClient): Promise<Device[]> =>
 
   nfc.on('touchstart', (card: Card) => {
     const id = card.id;
-    console.log('Card ID: ', id);
+    console.log('Card: ', card);
+    if (card.type !== 3) {
+      return;
+    }
 
-    if (ids.includes(id)) {
+    if (ids.length === 0 || ids.includes(id)) {
       // open
       hap.HAPcontrol(
         HB_IP,
