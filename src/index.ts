@@ -39,7 +39,8 @@ const getInstances = (hap: HAPNodeJSClient): Promise<Device[]> =>
       instance => instance.instance.port === parseInt(HB_PORT)
     );
     if (!instance) {
-      throw new Error('instance not found');
+      console.error('instance not found');
+      return;
     }
 
     const accessory = getAccessory(instance, aid);
